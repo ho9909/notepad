@@ -2,12 +2,12 @@
 
 
 //KEYDOWN
-//01)¹æÇâÅ°
+//01)ë°©í–¥í‚¤
 void Left(HWND hwnd)
 {
-	if(len==0)//¸Ç¾Õ
+	if(len==0)//ë§¨ì•
 	{
-		if(s_line!=0)// ¾Æ¿¹ ¸Ç¾ÕÀÌ ¾Æ´Ò ¶§
+		if(s_line!=0)// ì•„ì˜ˆ ë§¨ì•ì´ ì•„ë‹ ë•Œ
 		{
 			line--;
 			len = lstrlen(str[line]);
@@ -28,9 +28,9 @@ void Left(HWND hwnd)
 }
 void Right(HWND hwnd)
 {
-	if(len==lstrlen(str[line]))//¸ÇµÚ
+	if(len==lstrlen(str[line]))//ë§¨ë’¤
 			{
-				if(line!=s_line)//¾Æ¿¹ ¸Ç µÚ°¡ ¾Æ´Ò ‹š
+				if(line!=s_line)//ì•„ì˜ˆ ë§¨ ë’¤ê°€ ì•„ë‹ Â‹Âš
 				{
 					line++;
 					len = 0;
@@ -52,16 +52,16 @@ void Right(HWND hwnd)
 }
 void Up(HWND hwnd)
 {
-			if(line!=0)//¸Ç À§°¡ ¾Æ´Ò ¶§
+			if(line!=0)//ë§¨ ìœ„ê°€ ì•„ë‹ ë•Œ
 			{
-				bs_len = lstrlen(str[line-1]);//À­ ÁÙ
-				if(bs_len<len)//À­ ÁÙÀÌ ´õ ÂªÀ» ¶§
+				bs_len = lstrlen(str[line-1]);//ìœ— ì¤„
+				if(bs_len<len)//ìœ— ì¤„ì´ ë” ì§§ì„ ë•Œ
 				{
 					line--;
-					len = bs_len;//±× ÁÙÀÇ ¸Ç µÚ·Î
+					len = bs_len;//ê·¸ ì¤„ì˜ ë§¨ ë’¤ë¡œ
 					s_len =   lstrlen(str[line]);
 				}
-				else//À­ ÁÙÀÌ °°°Å³ª ´õ ±æ ‹š 
+				else//ìœ— ì¤„ì´ ê°™ê±°ë‚˜ ë” ê¸¸ Â‹Âš 
 				{
 					line--;
 					s_len =   lstrlen(str[line]);
@@ -76,16 +76,16 @@ void Up(HWND hwnd)
 void Down(HWND hwnd)
 {
 
-		if(line!=s_line)//¸Ç ¾Æ·¡°¡ ¾Æ´Ò ¶§
+		if(line!=s_line)//ë§¨ ì•„ë˜ê°€ ì•„ë‹ ë•Œ
 			{
-				bs_len = lstrlen(str[line+1]);//¾Æ·§ ÁÙ
-				if(bs_len<len)//¾Æ·¡ ÁÙÀÌ ´õ ÂªÀ» ¶§
+				bs_len = lstrlen(str[line+1]);//ì•„ë« ì¤„
+				if(bs_len<len)//ì•„ë˜ ì¤„ì´ ë” ì§§ì„ ë•Œ
 				{
 					line++;
-					len = bs_len;//±× ÁÙÀÇ ¸Ç µÚ·Î
+					len = bs_len;//ê·¸ ì¤„ì˜ ë§¨ ë’¤ë¡œ
 					s_len =   lstrlen(str[line]);
 				}
-				else//¾Æ·¡ ÁÙÀÌ °°°Å³ª ´õ ±æ ‹š 
+				else//ì•„ë˜ ì¤„ì´ ê°™ê±°ë‚˜ ë” ê¸¸ Â‹Âš 
 				{
 					line++;
 					s_len =   lstrlen(str[line]);
@@ -96,7 +96,7 @@ void Down(HWND hwnd)
 			SetCaretPos(5+size.cx,20*line);
 			InvalidateRect(hwnd, NULL, TRUE);
 }
-//02)¹öÆ° ¸ğÀ½
+//02)ë²„íŠ¼ ëª¨ìŒ
 void Home(HWND hwnd)
 {
 			len = 0;
@@ -125,26 +125,26 @@ void Insert()
 void Delete(HWND hwnd)
 {
 	 k=0;
-			if(len ==s_len)//¸ÇµÚ
+			if(len ==s_len)//ë§¨ë’¤
 			{
-				if(line!=s_line)//¸Ç ¸¶Áö¸· ÁÙ ¸ÇµÚ°¡ ¾Æ´Ò ¶§
+				if(line!=s_line)//ë§¨ ë§ˆì§€ë§‰ ì¤„ ë§¨ë’¤ê°€ ì•„ë‹ ë•Œ
 				{
 
-					bs_len = lstrlen(str[line+1]);//¹ØÁÙÀÇ ´Ü¾î¼ö
-					for(i=s_len; i<s_len+bs_len; i++ )//ÀÌ Àü ÀÚ¸®¼­ ºÎÅÍ ÇöÀç ¶óÀÎÀÇ °¹¼ö¸¸Å­ º¹»çÇØ¼­ ºÙ¿©ÁÖ°í
+					bs_len = lstrlen(str[line+1]);//ë°‘ì¤„ì˜ ë‹¨ì–´ìˆ˜
+					for(i=s_len; i<s_len+bs_len; i++ )//ì´ ì „ ìë¦¬ì„œ ë¶€í„° í˜„ì¬ ë¼ì¸ì˜ ê°¯ìˆ˜ë§Œí¼ ë³µì‚¬í•´ì„œ ë¶™ì—¬ì£¼ê³ 
 					{
 						str[line][i] = str[line+1][k];
 						Arr_len[line][i] = Arr_len[line+1][k];
 						k++;
 
 					}
-					for(i=0;i<bs_len;i++)//¿ø·¡ÀÖ´ø ÀÚ¸®¸¦ Áö¿öÁÖ°í
+					for(i=0;i<bs_len;i++)//ì›ë˜ìˆë˜ ìë¦¬ë¥¼ ì§€ì›Œì£¼ê³ 
 					{
 						str[line+1][i]=NULL;
 						Arr_len[line+1][i]=NULL;
 					}
 
-					for(i=1; i<s_line-line; i++)//ÇÑÄ­¾¿ ¹Ì·ïÁÖ´Â ¿ªÇÒ
+					for(i=1; i<s_line-line; i++)//í•œì¹¸ì”© ë¯¸ë¤„ì£¼ëŠ” ì—­í• 
 					{
 						k =  lstrlen(str[(line)+i+1]);
 						for(j=0; j< k; j++)
@@ -168,7 +168,7 @@ void Delete(HWND hwnd)
 			}
 			else
 			{
-				//µÚ¿¡ÀÖ´Â°Ô ÇÑÄ­ ¾¿ Áö¿öÁö±â
+				//ë’¤ì—ìˆëŠ”ê²Œ í•œì¹¸ ì”© ì§€ì›Œì§€ê¸°
 				for(i=len; i<s_len; i++)
 				{
 					str[line][i] = str[line][i+1];
@@ -183,10 +183,10 @@ void Delete(HWND hwnd)
 void Tab(HWND hwnd)
 {
 
-tab_num = len%8;//8·Î ³ª´« ³ª¸ÓÁö °ª
-			if(len==s_len)//³¡ ÁÙÀÏ‹š
+tab_num = len%8;//8ë¡œ ë‚˜ëˆˆ ë‚˜ë¨¸ì§€ ê°’
+			if(len==s_len)//ë ì¤„ì¼Â‹Âš
 			{
-				if(tab_num ==0 )//8·Î ³ª´©¾î ¶³¾îÁö¸é ¿ø·¡ 8¸¸Å­ ÀÌµ¿
+				if(tab_num ==0 )//8ë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ë©´ ì›ë˜ 8ë§Œí¼ ì´ë™
 				{
 					for(i=0;i<8;i++)
 					{
@@ -208,17 +208,17 @@ tab_num = len%8;//8·Î ³ª´« ³ª¸ÓÁö °ª
 
 
 			}
-			else//µÚ¿¡ ±Û¾¾°¡ ÀÖÀ»¶§
+			else//ë’¤ì— ê¸€ì”¨ê°€ ìˆì„ë•Œ
 			{
-				if(tab_num ==0 )//8·Î ³ª´©¾î ¶³¾îÁö¸é ¿ø·¡ 8¸¸Å­ ÀÌµ¿
+				if(tab_num ==0 )//8ë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ë©´ ì›ë˜ 8ë§Œí¼ ì´ë™
 				{
-					for(i=0;i<s_len-len;i++)//s_len-len¹ø¸¸Å­
+					for(i=0;i<s_len-len;i++)//s_len-lenë²ˆë§Œí¼
 					{
-						str[line][s_len+7-i] = str[line][s_len-1-i];//¸ÇµÚ¿¡¼­ºÎÅÍ 8Ä­¾¿ ¶ç¾î¼­ ¿Å±ä´Ù	
+						str[line][s_len+7-i] = str[line][s_len-1-i];//ë§¨ë’¤ì—ì„œë¶€í„° 8ì¹¸ì”© ë„ì–´ì„œ ì˜®ê¸´ë‹¤	
 					}
-					for(i=0;i<8;i++)//s_len-len¹ø¸¸Å­
+					for(i=0;i<8;i++)//s_len-lenë²ˆë§Œí¼
 					{
-						str[line][len+i] = ' ';//±× ¿ø·¡ ÀÚ¸® ½ºÆäÀÌ½º¹Ù·Î Ã¤¿öÁØ´Ù.
+						str[line][len+i] = ' ';//ê·¸ ì›ë˜ ìë¦¬ ìŠ¤í˜ì´ìŠ¤ë°”ë¡œ ì±„ì›Œì¤€ë‹¤.
 					}
 					s_len = s_len+8;
 					len=len+8;
@@ -226,11 +226,11 @@ tab_num = len%8;//8·Î ³ª´« ³ª¸ÓÁö °ª
 				}
 				else
 				{
-					for(i=0;i<s_len-len;i++)//s_len-len¹ø¸¸Å­
+					for(i=0;i<s_len-len;i++)//s_len-lenë²ˆë§Œí¼
 					{
-						str[line][s_len+7-tab_num-i] = str[line][s_len-1-i];//¸ÇµÚ¿¡¼­ºÎÅÍ 8Ä­¾¿ ¶ç¾î¼­ ¿Å±ä´Ù	
+						str[line][s_len+7-tab_num-i] = str[line][s_len-1-i];//ë§¨ë’¤ì—ì„œë¶€í„° 8ì¹¸ì”© ë„ì–´ì„œ ì˜®ê¸´ë‹¤	
 					}
-					for(i=0;i<8-tab_num;i++)//s_len-len¹ø¸¸Å­
+					for(i=0;i<8-tab_num;i++)//s_len-lenë²ˆë§Œí¼
 					{
 						str[line][len+i] =' ';
 					}
@@ -251,10 +251,10 @@ tab_num = len%8;//8·Î ³ª´« ³ª¸ÓÁö °ª
 void Enter(HWND hwnd)
 {
 
-			if(len == lstrlen(str[line]))//¸Ç µÚ¿¡¼­ ¿£ÅÍ
+			if(len == lstrlen(str[line]))//ë§¨ ë’¤ì—ì„œ ì—”í„°
 			{
 
-				if(line==s_line)//¸Ç ³¡ ÀÎµ¥ ¸Ç ³¡ ÁÙÀÏ¶§
+				if(line==s_line)//ë§¨ ë ì¸ë° ë§¨ ë ì¤„ì¼ë•Œ
 				{
 					line++;
 					s_line++;
@@ -262,10 +262,10 @@ void Enter(HWND hwnd)
 					s_len = 0;
 					InvalidateRect(hwnd, NULL, TRUE);
 				}
-				else//¸Ç ³¡ ÀÎµ¥ Áß°£ ÁÙÀÏ¶§
+				else//ë§¨ ë ì¸ë° ì¤‘ê°„ ì¤„ì¼ë•Œ
 				{
 					int k ;
-					for(i=0; i<s_line-line; i++)//ÇÑÄ­¾¿ ¹Ì·ïÁÖ´Â ¿ªÇÒ
+					for(i=0; i<s_line-line; i++)//í•œì¹¸ì”© ë¯¸ë¤„ì£¼ëŠ” ì—­í• 
 					{
 						k =  lstrlen(str[(s_line)-i]);
 						for(j=0; j< k; j++)
@@ -286,16 +286,16 @@ void Enter(HWND hwnd)
 					InvalidateRect(hwnd, NULL, FALSE);
 				}
 			}
-			else//¹®Àå Áß°£¿¡¼­ ¿£ÅÍ¸¦ ÃÆÀ» ¶§
+			else//ë¬¸ì¥ ì¤‘ê°„ì—ì„œ ì—”í„°ë¥¼ ì³¤ì„ ë•Œ
 			{
-				if(line==s_line)//Áß°£ÀÎµ¥ ¸Ç ³¡ ÁÙÀÏ¶§
+				if(line==s_line)//ì¤‘ê°„ì¸ë° ë§¨ ë ì¤„ì¼ë•Œ
 				{
-					for(i=0; i<s_len-len; i++)//ÇÑ Ä­ ¹ØÀ¸·Î ¿Å°ÜÁÖ°í
+					for(i=0; i<s_len-len; i++)//í•œ ì¹¸ ë°‘ìœ¼ë¡œ ì˜®ê²¨ì£¼ê³ 
 					{
 						str[line+1][i] = str[line][i+len];
 						Arr_len[line+1][i] = Arr_len[line][i+len];
 					}
-					for(i=len; i<s_len; i++)//¿ø·¡ ÀÖ´ø ÀÚ¸® Áö¿öÁÖ°í
+					for(i=len; i<s_len; i++)//ì›ë˜ ìˆë˜ ìë¦¬ ì§€ì›Œì£¼ê³ 
 					{
 						str[line][i]=NULL;
 						Arr_len[line][i]=NULL;
@@ -306,10 +306,10 @@ void Enter(HWND hwnd)
 					s_len =  lstrlen(str[line]);
 					InvalidateRect(hwnd, NULL, TRUE);
 				}
-				else//Áß°£ÀÎµ¥ Áß°£ ÁÙÀÏ¶§
+				else//ì¤‘ê°„ì¸ë° ì¤‘ê°„ ì¤„ì¼ë•Œ
 				{
 					int k ;
-					for(i=0; i<s_line-line; i++)//ÇÑÄ­¾¿ ¹Ì·ïÁÖ´Â ¿ªÇÒ
+					for(i=0; i<s_line-line; i++)//í•œì¹¸ì”© ë¯¸ë¤„ì£¼ëŠ” ì—­í• 
 					{
 						k =  lstrlen(str[(s_line)-i]);
 						for(j=0; j< k; j++)
@@ -323,12 +323,12 @@ void Enter(HWND hwnd)
 							Arr_len[(s_line)-i][j]=NULL;
 						}
 					}
-					for(i=0; i<s_len-len;i++)//ÇöÀç ÁÙÀÇ Ä³·µ µÚ¿¡¹®ÀåÀ» ´ÙÀ½ÁÙ·Î ¿Å°ÜÁØ´Ù.
+					for(i=0; i<s_len-len;i++)//í˜„ì¬ ì¤„ì˜ ìºëŸ¿ ë’¤ì—ë¬¸ì¥ì„ ë‹¤ìŒì¤„ë¡œ ì˜®ê²¨ì¤€ë‹¤.
 					{
 						str[line+1][i] = str[line][len+i];
 						Arr_len[line+1][i] = Arr_len[line][len+i];
 					}
-					for(i=len;i<s_len;i++)//¿ø·¡ÀÖ´ø ¹®ÀåÀ» Áö¿î´Ù
+					for(i=len;i<s_len;i++)//ì›ë˜ìˆë˜ ë¬¸ì¥ì„ ì§€ìš´ë‹¤
 					{
 						str[line][i] = NULL;
 						Arr_len[line][i] = NULL;
@@ -348,30 +348,30 @@ void Back(HWND hwnd)
 {
 
 
-			if(len==0)//ÁÙÀÇ ¸Ç ¾Õ
+			if(len==0)//ì¤„ì˜ ë§¨ ì•
 			{				
 				int k=0;
 
-				if(line!=0)//¸Ç Ã¹ÁÙÀÇ ¸Ç ¾ÕÀÌ ¾Æ´Ò¶§
+				if(line!=0)//ë§¨ ì²«ì¤„ì˜ ë§¨ ì•ì´ ì•„ë‹ë•Œ
 				{
-					bs_len = lstrlen(str[line-1]);//À­ÁÙÀÇ ´Ü¾î¼ö
-					for(i=bs_len; i<bs_len+ s_len; i++ )//ÀÌ Àü ÀÚ¸®¼­ ºÎÅÍ ÇöÀç ¶óÀÎÀÇ °¹¼ö¸¸Å­ º¹»çÇØ¼­ ºÙ¿©ÁÖ°í
+					bs_len = lstrlen(str[line-1]);//ìœ—ì¤„ì˜ ë‹¨ì–´ìˆ˜
+					for(i=bs_len; i<bs_len+ s_len; i++ )//ì´ ì „ ìë¦¬ì„œ ë¶€í„° í˜„ì¬ ë¼ì¸ì˜ ê°¯ìˆ˜ë§Œí¼ ë³µì‚¬í•´ì„œ ë¶™ì—¬ì£¼ê³ 
 					{
 						str[line-1][i] = str[line][len+k];
 						Arr_len[line-1][i] = Arr_len[line][len+k];
 						k++;
 
 					}
-					for(i=0;i<s_len;i++)//¿ø·¡ÀÖ´ø ÀÚ¸®¸¦ Áö¿öÁÖ°í
+					for(i=0;i<s_len;i++)//ì›ë˜ìˆë˜ ìë¦¬ë¥¼ ì§€ì›Œì£¼ê³ 
 					{
 						str[line][i]=NULL;
 						Arr_len[line][i]=NULL;
 					}
-					//µÚ¿¡ ÀÖ´Â°É ÇÑÄ­½Ä ´ç°ÜÁØ´Ù
+					//ë’¤ì— ìˆëŠ”ê±¸ í•œì¹¸ì‹ ë‹¹ê²¨ì¤€ë‹¤
 
 
 
-					for(i=0; i<s_line-line; i++)//ÇÑÄ­¾¿ ¹Ì·ïÁÖ´Â ¿ªÇÒ
+					for(i=0; i<s_line-line; i++)//í•œì¹¸ì”© ë¯¸ë¤„ì£¼ëŠ” ì—­í• 
 					{
 						k =  lstrlen(str[(line)+i+1]);
 						for(j=0; j< k; j++)
@@ -394,7 +394,7 @@ void Back(HWND hwnd)
 
 
 			}
-			else//Áß°£ÀÌ³ª ³¡
+			else//ì¤‘ê°„ì´ë‚˜ ë
 			{
 
 				for(i=len; i<s_len;i++)
@@ -417,7 +417,7 @@ void Tchar(HWND hwnd, WPARAM wParam)
 
 if(insert_flag==0)
 				{
-					//ÇöÀçÀ§Ä¡°¡ NULLÀÌ¸é ±× À§ Ä¡¿¡ Ãâ·Â NULLÀÌ ¾Æ´Ï¸é ÇÑÄ­ ¾¿ ¹Ì·ç°í Ãâ·Â 
+					//í˜„ì¬ìœ„ì¹˜ê°€ NULLì´ë©´ ê·¸ ìœ„ ì¹˜ì— ì¶œë ¥ NULLì´ ì•„ë‹ˆë©´ í•œì¹¸ ì”© ë¯¸ë£¨ê³  ì¶œë ¥ 
 					if(str[line][len]==NULL)
 					{
 						str[line][len] = (TCHAR)wParam;
@@ -428,7 +428,7 @@ if(insert_flag==0)
 					}
 					else
 					{
-						//i´Â ÇöÀçlineÀÇ len¼ö ¸¸Å­ºÎÅÍ ÇöÀç len±îÁöÀÇ µÚ·Î ¹Ğ¾îÁØ´Ù.
+						//iëŠ” í˜„ì¬lineì˜ lenìˆ˜ ë§Œí¼ë¶€í„° í˜„ì¬ lenê¹Œì§€ì˜ ë’¤ë¡œ ë°€ì–´ì¤€ë‹¤.
 						for(i= lstrlen(str[line]) ; i>len; i--)
 						{
 							str[line][i] = str[line][i-1];
@@ -443,7 +443,7 @@ if(insert_flag==0)
 					}
 					
 				}
-				else//ÀÎ¼­Æ®°¡ ´­¸° °æ¿ì
+				else//ì¸ì„œíŠ¸ê°€ ëˆŒë¦° ê²½ìš°
 				{
 
 					str[line][len] = (TCHAR)wParam;
@@ -478,8 +478,8 @@ void KHS_save(HWND hwnd, int flag)
 	DWORD readn;  
 
 
-	//ÀúÀå¿ë
-	WORD wc = 0xFEFF; //Çì´õ¸¦ ¾²´Â Äª±¸....À¯´ÏÄÚµå¸¦ ¶æÇÒ°É?
+	//ì €ì¥ìš©
+	WORD wc = 0xFEFF; //í—¤ë”ë¥¼ ì“°ëŠ” ì¹­êµ¬....ìœ ë‹ˆì½”ë“œë¥¼ ëœ»í• ê±¸?
 	DWORD dwBytes = 0;
 
 
@@ -488,31 +488,31 @@ void KHS_save(HWND hwnd, int flag)
 	memset(&OFN2,0,sizeof(OPENFILENAME));
 	OFN2.lStructSize = sizeof(OPENFILENAME);
 	OFN2.hwndOwner = hwnd;
-	OFN2.lpstrFilter = TEXT("¸ğµç ÆÄÀÏ(*.*)\0*.*\0ÅØ½ºÆ® ÆÄÀÏ\0*.txt;*.doc\0");
+	OFN2.lpstrFilter = TEXT("ëª¨ë“  íŒŒì¼(*.*)\0*.*\0í…ìŠ¤íŠ¸ íŒŒì¼\0*.txt;*.doc\0");
 	OFN2.lpstrFile = lpstrFile; //lpstrFile
 	OFN2.Flags = OFN_NOCHANGEDIR;
 	OFN2.nMaxFile = MAX_PATH;
 
 
 
-	if(GetSaveFileName(&OFN2) != 0) //´ÙÀÌ¾ó·Î±× ¿­±â
+	if(GetSaveFileName(&OFN2) != 0) //ë‹¤ì´ì–¼ë¡œê·¸ ì—´ê¸°
 	{
 
 
 		fp = CreateFile(OFN2.lpstrFile, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-		// À¯´ÏÄÚµåÀÓÀ» ¾Ë¸®´Â BOM
+		// ìœ ë‹ˆì½”ë“œì„ì„ ì•Œë¦¬ëŠ” BOM
 		WriteFile(fp, &wc, 2, &dwBytes, NULL);
 
-		// À¯´ÏÄÚµå ÅØ½ºÆ® ±æÀÌ¸¸Å­ ±â·ÏÇÑ´Ù
+		// ìœ ë‹ˆì½”ë“œ í…ìŠ¤íŠ¸ ê¸¸ì´ë§Œí¼ ê¸°ë¡í•œë‹¤
 		for(i=0;i<=s_line;i++)
 		{
 			WriteFile(fp, str[i], lstrlen(str[i]) * sizeof(TCHAR), &readn, NULL);
-			WriteFile(fp, "\r", 2, &readn, NULL);//¸Ç ¾ÕÀ¸·Î
-			WriteFile(fp, "\n", 2, &readn, NULL);//°³Çà
+			WriteFile(fp, "\r", 2, &readn, NULL);//ë§¨ ì•ìœ¼ë¡œ
+			WriteFile(fp, "\n", 2, &readn, NULL);//ê°œí–‰
 		}
-		CloseHandle(fp); // ÀÌÁ¦ ÇÊ¿ä¾ø¾îÁø ÇÚµéÀº ´İ´Â´Ù
-		MessageBox(hwnd, TEXT("ÅØ½ºÆ® ÆÄÀÏ·Î ÀúÀåÇÏ¿´½À´Ï´Ù."), TEXT("WriteFile"), MB_OK);
+		CloseHandle(fp); // ì´ì œ í•„ìš”ì—†ì–´ì§„ í•¸ë“¤ì€ ë‹«ëŠ”ë‹¤
+		MessageBox(hwnd, TEXT("í…ìŠ¤íŠ¸ íŒŒì¼ë¡œ ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤."), TEXT("WriteFile"), MB_OK);
 
 		if(flag==1)
 		{
@@ -523,7 +523,7 @@ void KHS_save(HWND hwnd, int flag)
 	}
 	else
 	{
-		MessageBox(hwnd, TEXT("ÅØ½ºÆ® ÆÄÀÏÀ» ÀúÀåÇÏÁö ¸øÇß½À´Ï´Ù."), 0, MB_OK);
+		MessageBox(hwnd, TEXT("í…ìŠ¤íŠ¸ íŒŒì¼ì„ ì €ì¥í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤."), 0, MB_OK);
 
 	}
 }
@@ -543,29 +543,29 @@ void KHS_open(HWND hwnd)
 	memset(&OFN,0,sizeof(OPENFILENAME));
 	OFN.lStructSize = sizeof(OPENFILENAME);
 	OFN.hwndOwner = hwnd;
-	OFN.lpstrFilter = TEXT("¸ğµç ÆÄÀÏ(*.*)\0*.*\0ÅØ½ºÆ® ÆÄÀÏ\0*.txt;*.doc\0");
+	OFN.lpstrFilter = TEXT("ëª¨ë“  íŒŒì¼(*.*)\0*.*\0í…ìŠ¤íŠ¸ íŒŒì¼\0*.txt;*.doc\0");
 	OFN.lpstrFile = lpstrFile;
 	OFN.nMaxFile = MAX_PATH;
-	OFN.Flags = OFN_NOCHANGEDIR;//¿­°Å³ª ÀúÀåÇÑ ÆÄÀÏÀÌ ¼ÓÇÑ µğ·ºÅä¸®¸¦ ½ÃÀÛµğ·ºÅä¸®·Î ÇÏÁö ¾Ê°ÔÇÏ´Â °Í
+	OFN.Flags = OFN_NOCHANGEDIR;//ì—´ê±°ë‚˜ ì €ì¥í•œ íŒŒì¼ì´ ì†í•œ ë””ë ‰í† ë¦¬ë¥¼ ì‹œì‘ë””ë ‰í† ë¦¬ë¡œ í•˜ì§€ ì•Šê²Œí•˜ëŠ” ê²ƒ
 	//OFN.lpstrInitialDir =TEXT( "c:\\");
-	//´ÙÀÌ¾ó·Î±×¸¦ ºÒ·¯¿À´Â ºÎºĞ
+	//ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ ë¶ˆëŸ¬ì˜¤ëŠ” ë¶€ë¶„
 
 
-	//´ÙÀÌ¾ó·Î±×¸¦ ¿­¾îÁÖ´Â ºÎºĞ -> ÅØ½ºÆ®ÆÄÀÏ ÀúÀå ½Ã ÀÎÄÚµùºÎºĞÀÌ ANSI°¡ ¾Æ´Ï¶ó À¯´ÏÄÚµå
+	//ë‹¤ì´ì–¼ë¡œê·¸ë¥¼ ì—´ì–´ì£¼ëŠ” ë¶€ë¶„ -> í…ìŠ¤íŠ¸íŒŒì¼ ì €ì¥ ì‹œ ì¸ì½”ë”©ë¶€ë¶„ì´ ANSIê°€ ì•„ë‹ˆë¼ ìœ ë‹ˆì½”ë“œ
 	if(GetOpenFileName(&OFN)!=0) 
 	{
 
-		wsprintf(op_str, TEXT("%s ÆÄÀÏÀ» ¼±ÅÃÇß½À´Ï´Ù."),OFN.lpstrFile);
+		wsprintf(op_str, TEXT("%s íŒŒì¼ì„ ì„ íƒí–ˆìŠµë‹ˆë‹¤."),OFN.lpstrFile);
 		fp = CreateFile(OFN.lpstrFile, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);  
 
 
-		if (fp != INVALID_HANDLE_VALUE) // ÆÄÀÏÀÇ Á¸Àç ¿©ºÎ È®ÀÎ ½ÇÆĞÇÏ¸é INVALID_HANDLE_VALUE¸¦ ¹İÈ­ÇÑ´Ù.
+		if (fp != INVALID_HANDLE_VALUE) // íŒŒì¼ì˜ ì¡´ì¬ ì—¬ë¶€ í™•ì¸ ì‹¤íŒ¨í•˜ë©´ INVALID_HANDLE_VALUEë¥¼ ë°˜í™”í•œë‹¤.
 		{
 
-			ReadFile(fp, buf, 1024, &readn, NULL); // buf¿¡ ÀÏ´Ü ¸ğµÎ ÀúÀå
+			ReadFile(fp, buf, 1024, &readn, NULL); // bufì— ì¼ë‹¨ ëª¨ë‘ ì €ì¥
 			j=0;
 			k=0;
-			//if(buf[0]==65279)//À¯´ÏÄÚµåÀÌ¸é
+			//if(buf[0]==65279)//ìœ ë‹ˆì½”ë“œì´ë©´
 			//{
 				for(i=1;i<lstrlen(buf);i++)
 				{
@@ -594,13 +594,13 @@ void KHS_open(HWND hwnd)
 			InvalidateRect(hwnd, NULL, TRUE);
 
 
-			MessageBox(hwnd,op_str,TEXT("ÆÄÀÏ ¿­±â ¼º°ø"),MB_OK);
-			CloseHandle(fp); // ÀÌÁ¦ ÇÊ¿ä¾ø¾îÁø ÇÚµéÀº ´İ´Â´Ù
+			MessageBox(hwnd,op_str,TEXT("íŒŒì¼ ì—´ê¸° ì„±ê³µ"),MB_OK);
+			CloseHandle(fp); // ì´ì œ í•„ìš”ì—†ì–´ì§„ í•¸ë“¤ì€ ë‹«ëŠ”ë‹¤
 
 		}
 		else
 		{
-			MessageBox(hwnd, TEXT("ÅØ½ºÆ® ÆÄÀÏÀ» ÀĞ¾î¿ÀÁö ¸øÇß½À´Ï´Ù."), 0, MB_OK);
+			MessageBox(hwnd, TEXT("í…ìŠ¤íŠ¸ íŒŒì¼ì„ ì½ì–´ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤."), 0, MB_OK);
 		}
 
 	}
@@ -608,39 +608,39 @@ void KHS_open(HWND hwnd)
 }
 void KHS_new_m(HWND hwnd)
 {
-	if(s_len!=0  || s_line!=0)//¸¸¾à ³»¿ëÀÌ ºñ¾îÀÖÁö ¾ÊÀ¸¸é
+	if(s_len!=0  || s_line!=0)//ë§Œì•½ ë‚´ìš©ì´ ë¹„ì–´ìˆì§€ ì•Šìœ¼ë©´
 			{
-				//ÀúÀåÇÒ°ÍÀÎÁö ¸Ş¼¼Áö ¹Ú½º·Î ¹°¾îº½
-				char retn = MessageBox(hwnd,TEXT("ÀúÀåÀ» ÇÏ½Ã°Ú½À´Ï±î?"),TEXT("Áú¹®"),MB_YESNOCANCEL);
-				if(retn==IDYES)//¿¹
+				//ì €ì¥í• ê²ƒì¸ì§€ ë©”ì„¸ì§€ ë°•ìŠ¤ë¡œ ë¬¼ì–´ë´„
+				char retn = MessageBox(hwnd,TEXT("ì €ì¥ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"),TEXT("ì§ˆë¬¸"),MB_YESNOCANCEL);
+				if(retn==IDYES)//ì˜ˆ
 				{
 					KHS_save(hwnd, 0);
 					KHS_new(hwnd);
-				}//¿¹ ³¡
-				else if(retn==IDNO)//¾Æ´Ï¿ä
+				}//ì˜ˆ ë
+				else if(retn==IDNO)//ì•„ë‹ˆìš”
 				{
 					KHS_new(hwnd);
-				}//¾Æ´Ï¿À ³¡
+				}//ì•„ë‹ˆì˜¤ ë
 			}
 
 }
 void KHS_open_m(HWND hwnd)
 {
 
-	if(s_len!=0 || s_line!=0)//¸¸¾à ³»¿ëÀÌ ºñ¾îÀÖÁö ¾ÊÀ¸¸é
+	if(s_len!=0 || s_line!=0)//ë§Œì•½ ë‚´ìš©ì´ ë¹„ì–´ìˆì§€ ì•Šìœ¼ë©´
 			{
-				char retn = MessageBox(hwnd,TEXT("ÀúÀåÀ» ÇÏ½Ã°Ú½À´Ï±î?"),TEXT("Áú¹®"),MB_YESNOCANCEL);
-				if(retn==IDYES)//¿¹
+				char retn = MessageBox(hwnd,TEXT("ì €ì¥ì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"),TEXT("ì§ˆë¬¸"),MB_YESNOCANCEL);
+				if(retn==IDYES)//ì˜ˆ
 				{
 					KHS_save(hwnd, 1);
 					KHS_open(hwnd);
-				}//¿¹ ³¡
-				else if(retn==IDNO)//¾Æ´Ï¿ä
+				}//ì˜ˆ ë
+				else if(retn==IDNO)//ì•„ë‹ˆìš”
 				{
-					KHS_new( hwnd);//Áö¿ì°í ÆÄÀÏ ¿­±â
+					KHS_new( hwnd);//ì§€ìš°ê³  íŒŒì¼ ì—´ê¸°
 					KHS_open(hwnd);
 
-				}//¾Æ´Ï¿À ³¡
+				}//ì•„ë‹ˆì˜¤ ë
 			}
 			else
 			{
