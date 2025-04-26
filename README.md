@@ -38,19 +38,32 @@
 >> http://soen.kr/lecture/win32api/win32lec.htm
 >> 
 >> http://mafa.tistory.com/entry/API-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%9D%98-%EA%B5%AC%EC%A1%B0
+>> 
 >> http://klkl0.tistory.com/87
+>> 
 >> http://wookss-blog.tistory.com/2
+>> 
 >> http://hackingboy.tistory.com/118
+>> 
 >> http://hackingboy.tistory.com/117
+>> 
 >> 메뉴
 >> http://zetcode.com/gui/winapi/menus/
+>> 
 >> http://soen.kr/lecture/win32api/lec5/lec5-2-2.htm
+>> 
 >> https://www.daniweb.com/programming/software-development/threads/287455/winapi-getopenfilename-and-getsavefilename-not-working#
+>> 
 >> 다이얼로그
+>> 
 >> http://winnerz.tistory.com/entry/Basic-DialogBox%EB%A9%94%EC%9D%B8%EC%B0%BD%EC%9D%84-%EB%8B%A4%EC%9D%B4%EC%96%BC%EB%A1%9C%EA%B7%B8%EB%B0%95%EC%8A%A4%EB%A1%9C-%EB%9D%84%EC%9A%B0%EA%B8%B0
+>> 
 >> http://blog.naver.com/PostView.nhn?blogId=netrance&logNo=110080318599
+>> 
 >> VK_가상 키
+>> 
 >> http://soen.kr/lecture/win32api/lec4/lec4-1-3.htm
+>> 
 >> https://shaeod.tistory.com/388
 <br />
 > # 기초 내용
