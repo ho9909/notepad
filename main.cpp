@@ -1,51 +1,51 @@
-#include <windows.h>//windows Çì´õÆÄÀÏ
+#include <windows.h>//windows í—¤ë”íŒŒì¼
 #include<stdio.h>
 #include"resource.h"
 #include "Function.h"
 
-//TRUE´Â Áö¿ì°í ±×¸®±â FALSE´Â À§¿¡ ±×¸®±â
+//TRUEëŠ” ì§€ìš°ê³  ê·¸ë¦¬ê¸° FALSEëŠ” ìœ„ì— ê·¸ë¦¬ê¸°
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg,
 	WPARAM wParam, LPARAM lParam);
 
-LPCTSTR lpszClass = TEXT("2017E7010_Çı½ÂÀÌ¸Ş¸ğÀå");
+LPCTSTR lpszClass = TEXT("2017E7010_ë©”ëª¨ì¥");
 
 
-//¸ŞÀÎ¹®(WinMain) ÇÔ¼öÈ£ÃâÀÚ(WINAPI-stdcall·Î Ã³¸®µÊ)
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, //	WINAPI : À©µµ¿ì ÇÁ·Î±×·¥ÀÌ¶ó´Â ÀÇ¹Ì
-	LPSTR lpszCmdLine, int nCmdShow)							 //	hInstance : ¿î¿µÃ¼Á¦ÀÇ Ä¿³ÎÀÌ ÀÀ¿ë ÇÁ·Î±×·¥¿¡ ºÎ¿©ÇÑ ID
-{																 //	szCmdLine : Ä¿¸àÆ®¶óÀÎ »ó¿¡¼­ ÇÁ·Î±×·¥ ±¸µ¿ ½Ã Àü´ŞµÈ ¹®ÀÚ¿­
-	HWND	hwnd;												 //	iCmdShow : À©µµ¿ì°¡ È­¸é¿¡ Ãâ·ÂµÉ ÇüÅÂ
+//ë©”ì¸ë¬¸(WinMain) í•¨ìˆ˜í˜¸ì¶œì(WINAPI-stdcallë¡œ ì²˜ë¦¬ë¨)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, //	WINAPI : ìœˆë„ìš° í”„ë¡œê·¸ë¨ì´ë¼ëŠ” ì˜ë¯¸
+	LPSTR lpszCmdLine, int nCmdShow)							 //	hInstance : ìš´ì˜ì²´ì œì˜ ì»¤ë„ì´ ì‘ìš© í”„ë¡œê·¸ë¨ì— ë¶€ì—¬í•œ ID
+{																 //	szCmdLine : ì»¤ë©˜íŠ¸ë¼ì¸ ìƒì—ì„œ í”„ë¡œê·¸ë¨ êµ¬ë™ ì‹œ ì „ë‹¬ëœ ë¬¸ìì—´
+	HWND	hwnd;												 //	iCmdShow : ìœˆë„ìš°ê°€ í™”ë©´ì— ì¶œë ¥ë  í˜•íƒœ
 	MSG		msg;
-	WNDCLASS WndClass;											 //	WndClass ¶ó´Â ±¸Á¶Ã¼ Á¤ÀÇ									 
-	WndClass.style = CS_SAVEBITS;					 //	Ãâ·Â½ºÅ¸ÀÏ -> °¡·ÁÁø À©µµ¿ì´Â WM_PAINT¸Ş¼¼Áö ¹ß»ı ¾ÈÇÔ
-	WndClass.lpfnWndProc = (WNDPROC)WndProc;								 //	ÇÁ·Î½ÃÀú ÇÔ¼ö¸í
-	WndClass.cbClsExtra = 0;									 //	O/S »ç¿ë ¿©ºĞ ¸Ş¸ğ¸® (Class)
-	WndClass.cbWndExtra = 0;									 //	O/s »ç¿ë ¿©ºĞ ¸Ş¸ğ¸® (Window)
-	WndClass.hInstance = hInstance;								 //	ÀÀ¿ë ÇÁ·Î±×·¥ ID
-	WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);			 //	¾ÆÀÌÄÜ À¯Çü
-	WndClass.hCursor = LoadCursor(NULL, IDC_IBEAM);				 //	Ä¿¼­ À¯Çü-> I·Î ¼³Á¤ÇØ³õÀ½
-	WndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);//	¹è°æ»ö   
-	WndClass.lpszMenuName = MAKEINTRESOURCE(IDR_MENU1);								 //	¸Ş´º ÀÌ¸§
-	WndClass.lpszClassName = lpszClass;							 //	Å¬·¡½º ÀÌ¸§
-	RegisterClass(&WndClass);									 //	¾Õ¼­ Á¤ÀÇÇÑ À©µµ¿ì Å¬·¡½ºÀÇ ÁÖ¼Ò
+	WNDCLASS WndClass;											 //	WndClass ë¼ëŠ” êµ¬ì¡°ì²´ ì •ì˜									 
+	WndClass.style = CS_SAVEBITS;					 //	ì¶œë ¥ìŠ¤íƒ€ì¼ -> ê°€ë ¤ì§„ ìœˆë„ìš°ëŠ” WM_PAINTë©”ì„¸ì§€ ë°œìƒ ì•ˆí•¨
+	WndClass.lpfnWndProc = (WNDPROC)WndProc;								 //	í”„ë¡œì‹œì € í•¨ìˆ˜ëª…
+	WndClass.cbClsExtra = 0;									 //	O/S ì‚¬ìš© ì—¬ë¶„ ë©”ëª¨ë¦¬ (Class)
+	WndClass.cbWndExtra = 0;									 //	O/s ì‚¬ìš© ì—¬ë¶„ ë©”ëª¨ë¦¬ (Window)
+	WndClass.hInstance = hInstance;								 //	ì‘ìš© í”„ë¡œê·¸ë¨ ID
+	WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);			 //	ì•„ì´ì½˜ ìœ í˜•
+	WndClass.hCursor = LoadCursor(NULL, IDC_IBEAM);				 //	ì»¤ì„œ ìœ í˜•-> Ië¡œ ì„¤ì •í•´ë†“ìŒ
+	WndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);//	ë°°ê²½ìƒ‰   
+	WndClass.lpszMenuName = MAKEINTRESOURCE(IDR_MENU1);								 //	ë©”ë‰´ ì´ë¦„
+	WndClass.lpszClassName = lpszClass;							 //	í´ë˜ìŠ¤ ì´ë¦„
+	RegisterClass(&WndClass);									 //	ì•ì„œ ì •ì˜í•œ ìœˆë„ìš° í´ë˜ìŠ¤ì˜ ì£¼ì†Œ
 
-	hwnd = CreateWindow(lpszClass,								 //	À©µµ¿ì°¡ »ı¼ºµÇ¸é ÇÚµé(hwnd)ÀÌ ¹İÈ¯ ¹Ø¿¡´Â ÀÎÀÚµé
-		lpszClass,												 //	À©µµ¿ì Å¬·¡½º, Å¸ÀÌÆ² ÀÌ¸§
-		WS_OVERLAPPEDWINDOW | WS_VSCROLL | WS_HSCROLL,		 //	À©µµ¿ì ½ºÅ¸ÀÏ
-		CW_USEDEFAULT,											 //	À©µµ¿ì À§Ä¡, xÁÂÇ¥
-		CW_USEDEFAULT,											 //	À©µµ¿ì À§Ä¡, yÁÂÇ¥
-		600,											 //	À©µµ¿ì Æø   
-		400,											 //	À©µµ¿ì ³ôÀÌ   
-		NULL,												 //	ºÎ¸ğ À©µµ¿ì ÇÚµé	 
-		NULL,													 //	¸Ş´º ÇÚµé
-		hInstance,    											 //	ÀÀ¿ë ÇÁ·Î±×·¥ ID
-		NULL     												 //	»ı¼ºµÈ À©µµ¿ì Á¤º¸
+	hwnd = CreateWindow(lpszClass,								 //	ìœˆë„ìš°ê°€ ìƒì„±ë˜ë©´ í•¸ë“¤(hwnd)ì´ ë°˜í™˜ ë°‘ì—ëŠ” ì¸ìë“¤
+		lpszClass,												 //	ìœˆë„ìš° í´ë˜ìŠ¤, íƒ€ì´í‹€ ì´ë¦„
+		WS_OVERLAPPEDWINDOW | WS_VSCROLL | WS_HSCROLL,		 //	ìœˆë„ìš° ìŠ¤íƒ€ì¼
+		CW_USEDEFAULT,											 //	ìœˆë„ìš° ìœ„ì¹˜, xì¢Œí‘œ
+		CW_USEDEFAULT,											 //	ìœˆë„ìš° ìœ„ì¹˜, yì¢Œí‘œ
+		600,											 //	ìœˆë„ìš° í­   
+		400,											 //	ìœˆë„ìš° ë†’ì´   
+		NULL,												 //	ë¶€ëª¨ ìœˆë„ìš° í•¸ë“¤	 
+		NULL,													 //	ë©”ë‰´ í•¸ë“¤
+		hInstance,    											 //	ì‘ìš© í”„ë¡œê·¸ë¨ ID
+		NULL     												 //	ìƒì„±ëœ ìœˆë„ìš° ì •ë³´
 		);
-	ShowWindow(hwnd, nCmdShow);									 //	À©µµ¿ìÀÇ È­¸é Ãâ·Â
-	UpdateWindow(hwnd);											 //	O/S ¿¡ WM_PAINT ¸Ş½ÃÁö Àü¼Û
+	ShowWindow(hwnd, nCmdShow);									 //	ìœˆë„ìš°ì˜ í™”ë©´ ì¶œë ¥
+	UpdateWindow(hwnd);											 //	O/S ì— WM_PAINT ë©”ì‹œì§€ ì „ì†¡
 
-	while (GetMessage(&msg, NULL, 0, 0))						 //	WinProc()¿¡¼­ PostQuitMessage() È£Ãâ ¶§±îÁö Ã³¸®
+	while (GetMessage(&msg, NULL, 0, 0))						 //	WinProc()ì—ì„œ PostQuitMessage() í˜¸ì¶œ ë•Œê¹Œì§€ ì²˜ë¦¬
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);									 //	WinMain -> WinProc  
@@ -56,49 +56,49 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, //	WINAPI : À©µ
 
 HDC hdc;
 
-int len;//ÇöÀç ¹®ÀÚ¿­
-int s_len;//ÃÑ ¹®ÀÚ¿­
-int bs_len;//Àü ¶óÀÎÀÇ ÃÑ ¹®ÀÚ¿­
+int len;//í˜„ì¬ ë¬¸ìì—´
+int s_len;//ì´ ë¬¸ìì—´
+int bs_len;//ì „ ë¼ì¸ì˜ ì´ ë¬¸ìì—´
 
-int line;//ÇöÀç ¹®ÀÚ¿­ÀÇ Çà
-int s_line;//ÃÑ ¶óÀÎÀÇ »çÀÌÁî
-int insert_flag=0;//ÀÎ¼­Æ® ÇÁ·¹±×
-int tab_num;//ÅÇÇÒ¶§ ÇÊ¿äÇÑ ¼ıÀÚ
+int line;//í˜„ì¬ ë¬¸ìì—´ì˜ í–‰
+int s_line;//ì´ ë¼ì¸ì˜ ì‚¬ì´ì¦ˆ
+int insert_flag=0;//ì¸ì„œíŠ¸ í”„ë ˆê·¸
+int tab_num;//íƒ­í• ë•Œ í•„ìš”í•œ ìˆ«ì
 int i=0,j=0,k=0;
 
-//int yPos;//½ºÅ©·Ñ ÇÒ ¶§ ÇÊ¿ä
+//int yPos;//ìŠ¤í¬ë¡¤ í•  ë•Œ í•„ìš”
 //int xPos;
 
 
-SIZE size;//¹®ÀÚÀÇ Å©±â¸¦ Á¤ÇØÁÖ´Â º¯¼ö
-TCHAR str[100][1000];//¹®ÀÚ¿­À» ÀúÀå ÇÒ °ø°£
-int Arr_len[100][1000];//¹®ÀÚ ÇÏ³ªÇÏ³ªÀÇ ±æÀÌ°¡ µé¾î°¥ ¹è¿­
-int beforesize=0; //ÀüÀÇ Å©±â¸¦ ±â¾ïÇØÁÖ´Â º¯¼ö
+SIZE size;//ë¬¸ìì˜ í¬ê¸°ë¥¼ ì •í•´ì£¼ëŠ” ë³€ìˆ˜
+TCHAR str[100][1000];//ë¬¸ìì—´ì„ ì €ì¥ í•  ê³µê°„
+int Arr_len[100][1000];//ë¬¸ì í•˜ë‚˜í•˜ë‚˜ì˜ ê¸¸ì´ê°€ ë“¤ì–´ê°ˆ ë°°ì—´
+int beforesize=0; //ì „ì˜ í¬ê¸°ë¥¼ ê¸°ì–µí•´ì£¼ëŠ” ë³€ìˆ˜
 
 
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
-	PAINTSTRUCT ps;//±ÛÀÚÀÇ Å©±â,»ö±òµîÀÇ Á¤º¸°¡ µé¾îÀÖ´Â ±¸Á¶Ã¼
+	PAINTSTRUCT ps;//ê¸€ìì˜ í¬ê¸°,ìƒ‰ê¹”ë“±ì˜ ì •ë³´ê°€ ë“¤ì–´ìˆëŠ” êµ¬ì¡°ì²´
 
 
-	//static TCHAR str[100][1000];//¹®ÀÚ¿­À» ÀúÀå ÇÒ °ø°£		-> staticÀ» ¾²¸é Àü¿ªº¯¼öÃ³·³ ¾µ ¼ö ÀÖ´Ù
+	//static TCHAR str[100][1000];//ë¬¸ìì—´ì„ ì €ì¥ í•  ê³µê°„		-> staticì„ ì“°ë©´ ì „ì—­ë³€ìˆ˜ì²˜ëŸ¼ ì“¸ ìˆ˜ ìˆë‹¤
 
 
 
 	switch (iMsg) {
 
-	case WM_SETFOCUS://ÇÁ·Î±×·¥ÀÌ Æ÷Ä¿½Ì µÇ¾úÀ» ¶§
-		CreateCaret(hwnd, NULL, 1, 14);//Ä³·µÀ» ¸¸µé¾î ÁØ´Ù.
-		ShowCaret(hwnd);//Ä³·µÀ» º¸¿©ÁØ´Ù.  
+	case WM_SETFOCUS://í”„ë¡œê·¸ë¨ì´ í¬ì»¤ì‹± ë˜ì—ˆì„ ë•Œ
+		CreateCaret(hwnd, NULL, 1, 14);//ìºëŸ¿ì„ ë§Œë“¤ì–´ ì¤€ë‹¤.
+		ShowCaret(hwnd);//ìºëŸ¿ì„ ë³´ì—¬ì¤€ë‹¤.  
 		break;
 
-	case WM_KILLFOCUS://ÇÁ·Î±×·¥ÀÌ ¾Æ¿ô Æ÷Ä¿½Ì µÇ¾úÀ» ¶§
-		HideCaret(hwnd);//Ä³·µÀ» ¼û°ÜÁØ´Ù.
-		DestroyCaret();//Ä³·µÀ» Áö¿öÁØ´Ù.
+	case WM_KILLFOCUS://í”„ë¡œê·¸ë¨ì´ ì•„ì›ƒ í¬ì»¤ì‹± ë˜ì—ˆì„ ë•Œ
+		HideCaret(hwnd);//ìºëŸ¿ì„ ìˆ¨ê²¨ì¤€ë‹¤.
+		DestroyCaret();//ìºëŸ¿ì„ ì§€ì›Œì¤€ë‹¤.
 		break;
 
-	case WM_CREATE://ÇÁ·Î±×·¥ÀÌ Ã³À½ ½ÇÇàµÉ½Ã ÇÑ¹ø¸¸ ¹ß»ıµÇ´Â ÃÊ±âÈ­ ¸Ş½ÃÁö
+	case WM_CREATE://í”„ë¡œê·¸ë¨ì´ ì²˜ìŒ ì‹¤í–‰ë ì‹œ í•œë²ˆë§Œ ë°œìƒë˜ëŠ” ì´ˆê¸°í™” ë©”ì‹œì§€
 		len = 0;
 		s_len = 0;
 		line = 0;
@@ -108,46 +108,46 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	case WM_KEYDOWN:
 		switch (wParam) {
 
-		case VK_LEFT://ÁÂÃø Ä¿¼­ ÀÌµ¿Å°
+		case VK_LEFT://ì¢Œì¸¡ ì»¤ì„œ ì´ë™í‚¤
 			Left( hwnd);
 			break;
 
-		case VK_RIGHT://¿ìÃø Ä¿¼­ ÀÌµ¿Å°
+		case VK_RIGHT://ìš°ì¸¡ ì»¤ì„œ ì´ë™í‚¤
 			Right( hwnd);
 			break;
 
-		case VK_UP://À§ÂÊ Ä¿¼­ ÀÌµ¿Å°
+		case VK_UP://ìœ„ìª½ ì»¤ì„œ ì´ë™í‚¤
 			Up( hwnd);
 			break;
 
-		case VK_DOWN://¾Æ·¡ÂÊ Ä¿¼­ ÀÌµ¿Å°
+		case VK_DOWN://ì•„ë˜ìª½ ì»¤ì„œ ì´ë™í‚¤
 			Down( hwnd);
 			break;
 
-		case VK_HOME://HomeÅ°
+		case VK_HOME://Homeí‚¤
 			Home(hwnd);
 			break;
 
-		case VK_END://EndÅ°
+		case VK_END://Endí‚¤
 			End( hwnd);
 			break;
 
-		case VK_INSERT://Insert Å°
+		case VK_INSERT://Insert í‚¤
 			Insert();
 			break;
 
-		case VK_DELETE://Delete Å°
+		case VK_DELETE://Delete í‚¤
 			Delete( hwnd);
 			break;  
 
-		case VK_TAB://TabÅ°
+		case VK_TAB://Tabí‚¤
 			Tab( hwnd);
 			break;
 
-		}//Å°´Ù¿î
+		}//í‚¤ë‹¤ìš´
 		break;
 
-	case WM_CHAR: //Å°º¸µå ÀÔ·Â½Ã ¹ß»ıµÈ´Ù. °ªÀºwParam¿¡¼­ ¹Ş¾Æ¿Â´Ù.
+	case WM_CHAR: //í‚¤ë³´ë“œ ì…ë ¥ì‹œ ë°œìƒëœë‹¤. ê°’ì€wParamì—ì„œ ë°›ì•„ì˜¨ë‹¤.
 		switch (wParam) {
 
 		case VK_RETURN://Enter
@@ -157,23 +157,23 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 			Back( hwnd);
 			break;
 
-		default://¹®ÀÚ¸¦ ¹ŞÀ¸¸é Ãâ·ÂÇØÁØ´Ù
-			if((TCHAR)wParam !=  VK_TAB)//ÅÇÀÌ ¾Æ´Ò ½Ã
+		default://ë¬¸ìë¥¼ ë°›ìœ¼ë©´ ì¶œë ¥í•´ì¤€ë‹¤
+			if((TCHAR)wParam !=  VK_TAB)//íƒ­ì´ ì•„ë‹ ì‹œ
 			{
 				Tchar( hwnd,  wParam);
 			}
-		}//½ºÀ§Ä¡ ³¡
+		}//ìŠ¤ìœ„ì¹˜ ë
 
-		//ÀÔ·ÂÀÌ ³¡³¯ ¶§ ¸¶´Ù  Ä³·µÀÇ À§Ä¡¸¦ ¹Ù²ãÁà¾ßÇÑ´Ù.
-		hdc=GetDC(hwnd);//¹Ù²ï À©µµ¿ìÀÇ Á¤º¸¸¦ °¡Á®¿Â´Ù.
-		GetTextExtentPoint(hdc,str[line],len,&size); //GetTextExtentPoint´Â ¹®ÀÚ¿­ÀÇ Æø°ú ³ôÀÌ¸¦ °è»êÇØÁØ´Ù.
+		//ì…ë ¥ì´ ëë‚  ë•Œ ë§ˆë‹¤  ìºëŸ¿ì˜ ìœ„ì¹˜ë¥¼ ë°”ê¿”ì¤˜ì•¼í•œë‹¤.
+		hdc=GetDC(hwnd);//ë°”ë€ ìœˆë„ìš°ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
+		GetTextExtentPoint(hdc,str[line],len,&size); //GetTextExtentPointëŠ” ë¬¸ìì—´ì˜ í­ê³¼ ë†’ì´ë¥¼ ê³„ì‚°í•´ì¤€ë‹¤.
 
 		if(len==1)
 		{
 			Arr_len[line][len-1] = size.cx;
 			beforesize=size.cx;
 		}
-		else if(len==0)//È¨Å° ´©¸¥ ÈÄ ÀÔ·Â
+		else if(len==0)//í™ˆí‚¤ ëˆ„ë¥¸ í›„ ì…ë ¥
 		{
 			Arr_len[line][len]=size.cx;
 			beforesize=size.cx;
@@ -185,53 +185,53 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		}
 
 
-		SetCaretPos(5+size.cx,20*line);//Ä³·µÀÇ À§Ä¡¸¦ ¹Ù²ãÁÖ´Â                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ¿ªÇÒ.
+		SetCaretPos(5+size.cx,20*line);//ìºëŸ¿ì˜ ìœ„ì¹˜ë¥¼ ë°”ê¿”ì£¼ëŠ”                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ì—­í• .
 		InvalidateRect(hwnd, NULL, TRUE);
 
-		break;//Â÷ ³¡
+		break;//ì°¨ ë
 
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 
 		for (i = 0; i < s_line + 1; i++)
 			TextOut(hdc, 5, i*20, str[i], lstrlen(str[i]));
-		//ÇÑÁÙ¿¡ 20 ¸¸Å­ ³ªÁß¿¡ È­»ìÇ¥°¡ »ı±â¸é line ÀÚ
+		//í•œì¤„ì— 20 ë§Œí¼ ë‚˜ì¤‘ì— í™”ì‚´í‘œê°€ ìƒê¸°ë©´ line ì
 		EndPaint(hwnd, &ps);
 
 		break;
 
 	case WM_DESTROY:
-		PostQuitMessage(0);//0ÀÌ¸é ÇÁ·Î±×·¥ Á¾·á
+		PostQuitMessage(0);//0ì´ë©´ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 		return 0;
 
 
 
-	case WM_COMMAND://ÇÁ·Î±×·¥ ½ÇÇàÁß »ç¿ëÀÚ°¡ ¸Ş´º Ç×¸ñÀ» ¼±ÅÃÇÏ¸é WM_COMMAND ¸Ş¼¼Áö ¹ß»ı
+	case WM_COMMAND://í”„ë¡œê·¸ë¨ ì‹¤í–‰ì¤‘ ì‚¬ìš©ìê°€ ë©”ë‰´ í•­ëª©ì„ ì„ íƒí•˜ë©´ WM_COMMAND ë©”ì„¸ì§€ ë°œìƒ
 
 
 		switch(wParam) {
 
-		case ID_KHS_NEW://ÆÄÀÏ »õ·Î ¸¸µé±â
+		case ID_KHS_NEW://íŒŒì¼ ìƒˆë¡œ ë§Œë“¤ê¸°
 			KHS_new_m( hwnd);
 			break;
 
-		case ID_KHS_OPEN: //ÆÄÀÏ ¿­±â
+		case ID_KHS_OPEN: //íŒŒì¼ ì—´ê¸°
 			KHS_open_m( hwnd);
 			break;
 
-		case ID_KHS_SAVE://ÆÄÀÏ ÀúÀå
+		case ID_KHS_SAVE://íŒŒì¼ ì €ì¥
 			KHS_save( hwnd, 0);
 
 			break;
 
-		case ID_KHS_QUIT://ÇÁ·Î±×·¥ Á¾·á
+		case ID_KHS_QUIT://í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 			SendMessage(hwnd, WM_CLOSE, 0, 0);
 			break;
 		}
 
 		break;
 
-	}//½ºÀ§Ä¡ ³¡
+	}//ìŠ¤ìœ„ì¹˜ ë
 
-	return DefWindowProc(hwnd, iMsg, wParam, lParam);			 //	CASE¿¡¼­ Á¤ÀÇµÇÁö ¾ÊÀº ¸Ş½ÃÁö´Â Ä¿³ÎÀÌ Ã³¸®ÇÏµµ·Ï ¸Ş½ÃÁö Àü´Ş
+	return DefWindowProc(hwnd, iMsg, wParam, lParam);			 //	CASEì—ì„œ ì •ì˜ë˜ì§€ ì•Šì€ ë©”ì‹œì§€ëŠ” ì»¤ë„ì´ ì²˜ë¦¬í•˜ë„ë¡ ë©”ì‹œì§€ ì „ë‹¬
 }
